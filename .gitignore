@@ -1,0 +1,12 @@
+# Executables
+*.out
+
+# Vim
+*.swp
+*.swo
+
+# VSCode
+.vscode
+
+# Mac
+.DS_Store
