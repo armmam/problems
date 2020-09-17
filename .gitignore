@@ -5,6 +5,10 @@
 *.swp
 *.swo
 
+# Go
+cmd
+go.mod
+
 # VSCode
 .vscode
 
