@@ -1,55 +1,28 @@
 package validparentheses
 
-import "fmt"
-
-// Stack is a trivial stack implementation
-type Stack struct {
-	stack []rune
-}
-
-// Push a new element into the stack
-func (s *Stack) Push(item rune) {
-	s.stack = append(s.stack, item)
-}
-
-// Pop an element from the stack
-func (s *Stack) Pop() (item rune, err error) {
-	if len(s.stack) > 0 {
-		item = s.stack[len(s.stack)-1]
-		s.stack = s.stack[:len(s.stack)-1]
-	} else {
-		err = fmt.Errorf("stack is empty")
-	}
-	return
-}
-
-// IsEmpty tells whether the stack is empty
-func (s *Stack) IsEmpty() bool {
-	if len(s.stack) == 0 {
-		return true
-	}
-	return false
-}
-
-var brackets = map[rune]rune{
-	'(': ')',
-	'{': '}',
-	'[': ']',
-}
-
 func isValid(s string) bool {
-	stack := &Stack{}
+	brackets := map[rune]rune{
+		'{': '}',
+		'(': ')',
+		'[': ']',
+	}
+	var st []rune
 	for _, c := range s {
-		if c == '(' || c == '{' || c == '[' {
-			stack.Push(c)
+		if c == '{' || c == '(' || c == '[' {
+			st = append(st, c)
 		} else {
-			match, err := stack.Pop()
-			if err != nil || brackets[match] != c {
+			if len(st) >= 1 {
+				if brackets[st[len(st) - 1]] == c {
+						st = st[:len(st) - 1] 
+				} else {
+					return false
+				}
+			} else {
 				return false
 			}
 		}
 	}
-	if stack.IsEmpty() {
+	if len(st) == 0 {
 		return true
 	}
 	return false
