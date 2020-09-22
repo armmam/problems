@@ -11,12 +11,8 @@ func isValid(s string) bool {
 		if c == '{' || c == '(' || c == '[' {
 			st = append(st, c)
 		} else {
-			if len(st) >= 1 {
-				if brackets[st[len(st) - 1]] == c {
-						st = st[:len(st) - 1] 
-				} else {
-					return false
-				}
+			if len(st) >= 1 && brackets[st[len(st) - 1]] == c {
+				st = st[:len(st) - 1]
 			} else {
 				return false
 			}
