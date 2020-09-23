@@ -1,6 +1,6 @@
 package removenthnode
 
-// ListNode of a signly-linked list
+// ListNode represents a node of a signly-linked list
 type ListNode struct {
 	Val  int
 	Next *ListNode
