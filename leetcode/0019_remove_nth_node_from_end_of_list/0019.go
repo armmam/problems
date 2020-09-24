@@ -1,4 +1,4 @@
-package removenthnode
+package removenthnodefromendoflist
 
 // ListNode represents a node of a signly-linked list
 type ListNode struct {
@@ -6,7 +6,8 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func removeNthFromEnd(head *ListNode, n int) *ListNode {
+// RemoveNthFromEnd removes the n-th node from the end of list and returns its head
+func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
 	dummy := &ListNode{Next: head}
 	end := dummy
 	for i := 0; i < n; i++ {

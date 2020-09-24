@@ -1,19 +1,19 @@
-package validparenthesesclasses
+package validparentheses
 
 import "fmt"
 
 // Stack is a trivial stack implementation
-type Stack struct {
+type stack struct {
 	stack []rune
 }
 
 // Push a new element into the stack
-func (s *Stack) Push(item rune) {
+func (s *stack) push(item rune) {
 	s.stack = append(s.stack, item)
 }
 
 // Pop an element from the stack
-func (s *Stack) Pop() (item rune, err error) {
+func (s *stack) pop() (item rune, err error) {
 	if len(s.stack) > 0 {
 		item = s.stack[len(s.stack)-1]
 		s.stack = s.stack[:len(s.stack)-1]
@@ -24,7 +24,7 @@ func (s *Stack) Pop() (item rune, err error) {
 }
 
 // IsEmpty tells whether the stack is empty
-func (s *Stack) IsEmpty() bool {
+func (s *stack) isEmpty() bool {
 	if len(s.stack) == 0 {
 		return true
 	}
@@ -37,19 +37,20 @@ var brackets = map[rune]rune{
 	'[': ']',
 }
 
-func isValid(s string) bool {
-	stack := &Stack{}
+// IsValidWithStack determines if the input string is valid
+func IsValidWithStack(s string) bool {
+	stack := &stack{}
 	for _, c := range s {
 		if c == '(' || c == '{' || c == '[' {
-			stack.Push(c)
+			stack.push(c)
 		} else {
-			match, err := stack.Pop()
+			match, err := stack.pop()
 			if err != nil || brackets[match] != c {
 				return false
 			}
 		}
 	}
-	if stack.IsEmpty() {
+	if stack.isEmpty() {
 		return true
 	}
 	return false
