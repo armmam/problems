@@ -9,7 +9,7 @@ func IsValid(s string) bool {
 	}
 	var st []rune
 	for _, c := range s {
-		if c == '{' || c == '(' || c == '[' {
+		if _, ok := brackets[c]; ok {
 			st = append(st, c)
 		} else {
 			if len(st) >= 1 && brackets[st[len(st) - 1]] == c {
