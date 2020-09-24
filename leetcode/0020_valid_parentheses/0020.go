@@ -1,6 +1,7 @@
 package validparentheses
 
-func isValid(s string) bool {
+// IsValid determines if the input string is valid
+func IsValid(s string) bool {
 	brackets := map[rune]rune{
 		'{': '}',
 		'(': ')',
