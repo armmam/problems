@@ -9,7 +9,7 @@ public:
         vector<vector<int>> res;
         sort(begin(nums), end(nums));
         for (int i = 0; i < int(nums.size()) - 2; ++i) {
-            if (nums[i] > 0) return res;
+            if (nums[i] > 0) return res; // pruning
             if (i == 0 || nums[i] != nums[i - 1]) {
                 int sum = -nums[i], j = i + 1, k = nums.size() - 1;
                 while (j < k) {
