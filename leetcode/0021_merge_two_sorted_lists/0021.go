@@ -27,3 +27,21 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 	return res.Next
 }
+
+func mergeTwoListsAnotherSolution(l1 *ListNode, l2 *ListNode) *ListNode {
+    res := &ListNode{}
+    prev := res
+    for l1 != nil || l2 != nil {
+        if l1 == nil || (l2 != nil && l1.Val > l2.Val) {
+            tmp := l1
+            l1 = l2
+            l2 = tmp
+        }
+        if l1 != nil {
+            prev.Next = l1
+            l1 = l1.Next
+            prev = prev.Next
+        }
+    }
+    return res.Next
+}
