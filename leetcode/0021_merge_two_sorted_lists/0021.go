@@ -6,7 +6,8 @@ type ListNode struct {
 	Next *ListNode
 }
 
-func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+// MergeTwoLists and return it as a new sorted list
+func MergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	res := &ListNode{}
 	tmp := res
 	for l1 != nil && l2 != nil {
@@ -28,7 +29,8 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 	return res.Next
 }
 
-func mergeTwoListsAnotherSolution(l1 *ListNode, l2 *ListNode) *ListNode {
+// MergeTwoListsAnotherSolution and return it as a new sorted list
+func MergeTwoListsAnotherSolution(l1 *ListNode, l2 *ListNode) *ListNode {
 	res := &ListNode{}
 	prev := res
 	for l1 != nil || l2 != nil {
