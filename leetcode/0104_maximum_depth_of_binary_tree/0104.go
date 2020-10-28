@@ -9,20 +9,15 @@ package leetcode
  * }
  */
  func maxDepth(root *TreeNode) int {
-    var depth, max int
-    traverse(root, &depth, &max)
-    return max
+    if root == nil {
+        return 0
+    }
+    return max(maxDepth(root.Left), maxDepth(root.Right)) + 1
 }
 
-func traverse(node *TreeNode, depth *int, max *int) {
-    if node == nil {
-        if *depth > *max {
-            *max = *depth
-        }
-        return
+func max(a, b int) int {
+    if a > b {
+        return a
     }
-    *depth++
-    traverse(node.Left, depth, max)
-    traverse(node.Right, depth, max)
-    *depth--
+    return b
 }
